@@ -16,9 +16,16 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     @Query(value = "select * from book where book_id =?1", nativeQuery = true)
     List<Book> findBookByIdUseSql(Integer bookId);
+    List<Book> findBooksByBorrowermemnoIsNotNull();
+    Integer countBookByCallnumberIs(String callnumber);
 
+    @Query(value = "select CallNumber from book group by CallNumber having COUNT(*)<=2", nativeQuery = true)
+    List<String> findBooksByCountUseSql();
     //设置事务注解，当操作失败时进行回滚
     @Transactional
     void deleteBookByBookId(Integer bookId);
+
+
+
 
 }

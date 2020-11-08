@@ -10,4 +10,7 @@ public interface BookService {
     List<Book> findBookByIdUseSql(Integer Id);
     Integer deleteBookById(Integer id);
     Integer updateBook(Book book, Integer method);
+    List<Book> findBooksByBorrowermemnoIsNotNull();
+    Integer countBookByCallnumberIs(String callnumber);
+    List<String> findBooksByCountUseSql();
 }

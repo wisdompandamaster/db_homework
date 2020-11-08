@@ -43,6 +43,22 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> findBooksByBorrowermemnoIsNotNull(){
+        return bookRepository.findBooksByBorrowermemnoIsNotNull();
+    }
+
+    @Override
+    public Integer countBookByCallnumberIs(String callnumber){
+        return bookRepository.countBookByCallnumberIs(callnumber);
+    }
+
+    @Override
+    public List<String> findBooksByCountUseSql()
+    {
+        return bookRepository.findBooksByCountUseSql();
+    }
+
+    @Override
     public Integer updateBook(Book book, Integer method) {
         //method表示为更新方式，method=0表示为插入操作，method=1表示为更新操作
 
@@ -61,4 +77,6 @@ public class BookServiceImpl implements BookService {
         bookRepository.saveAndFlush(book);
         return 0;
     }
+
+
 }

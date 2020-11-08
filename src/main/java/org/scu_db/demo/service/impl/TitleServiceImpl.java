@@ -12,6 +12,9 @@ import java.util.List;
 public class TitleServiceImpl implements TitleService {
     @Autowired
     private TitleRepository titleRepository;
-
+    @Override
+    public List<Title> findTitlesByNameIsIn(List<String> name) {
+        return titleRepository.findTitlesByNameIsIn(name);
+    }
 
 }
